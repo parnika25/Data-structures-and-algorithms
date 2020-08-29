@@ -1,0 +1,8 @@
+1 Create new nodes
+2 Insert a node at the beginning
+3 To insert a given node after a given value
+4 To insert a given node before a given value
+5 Display the list
+6 To count the number of nodes
+7 To check if the given item is present or not and also its position
+8 To find the sum all nodes
