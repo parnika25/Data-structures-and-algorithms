@@ -12,9 +12,9 @@ void create(struct node **head,int r,int c,int v)
 {
 struct node *temp;
 struct node *new = (struct node *)malloc(sizeof(struct node));
-new->row=r;
-new->col=c;
-new->val=v;
+int exists=0;
+if(v!=0)
+{
 new->next=NULL;
 if((*head)->next==NULL)
 (*head)->next=new;
@@ -22,10 +22,25 @@ else
 {
 temp=((*head)->next);
 while(temp->next!=NULL)
-temp=temp->next;
-temp->next=new;
+{
+  temp=temp->next;
+  if(temp->row==r && temp->col==c)
+      exists=1;
 }
-((*head)->val)++;
+if(exists==0)
+{
+  new->row=r;
+  new->col=c;
+  new->val=v;
+  ((*head)->val)++;
+  temp->next=new;
+}
+else
+  printf("The given position already exists in the sparse matrix\n"); //as you are not using this function to create nodes for t3 and it is only used to create nodes for input values, it will not backfire
+}
+}
+else
+  printf("Values should be non-zero\n");
 }
 
 void add(struct node **head1,struct node **head2,struct node **head3)
