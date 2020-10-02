@@ -1,0 +1,107 @@
+#include <iostream>
+
+using namespace std;
+struct node
+#include <iostream>
+
+using namespace std;
+struct node
+{
+
+    char data;
+    struct node *next;
+}*top=NULL;
+
+char push(char v)
+{
+  struct node *curr;
+  curr=new node;
+  if(curr==NULL)
+  {
+
+      cout<<"stack is fuLL"<<endl;
+  }
+  else{
+    curr->data=v;
+    curr->next=top;
+    top=curr;
+  }
+
+
+}
+char pop( )
+{
+    struct node *curr;
+    int x =-1;
+    if(curr==NULL)
+    {
+        cout<<"under flow";
+        return 1;
+    }
+    else{
+   curr=top;
+   top=top->next;
+   x=curr->data;
+   delete(curr);
+    }
+    return x;
+}
+
+void check(char *arr)
+{
+     int i;
+     int m;
+    for(int i=0;arr[i]!='\0';i++)
+    {
+        if(arr[i]=='('||arr[i]=='['||arr[i]=='{')
+        {
+            push(arr[i]);
+        }
+
+        else if (arr[i]==')'||arr[i]=='}'||arr[i]==']')
+        {
+            if(top==0)
+            {
+                cout<<"no match found"<<endl<<"not balanced"<<endl;
+            }
+            m=pop();
+            if(arr[i]==')'&&m=='{'||arr[i]==')'&&m=='[')
+            {
+                cout<<"not balanced at "<<arr[i]<<endl;
+            }
+            else if (arr[i]==']'&&m=='{'||arr[i]==']'&&m=='(')
+            {
+               cout<<"not balanced at "<<arr[i]<<endl;
+            }
+            else if (arr[i]=='}'&&m=='('||arr[i]=='}'&&m=='[')
+            {
+               cout<<"not balanced at "<<arr[i]<<endl;
+            }
+        }
+    }
+        if(top==0)
+        {
+            cout<<"balanced"<<endl;
+
+            //return 1;
+        }
+        else
+        {
+            cout<<"not balanced"<<endl;
+            //return 0;
+        }
+
+
+
+}
+
+
+
+int main()
+
+{
+    char *arr = "{{[[(())]]}}";
+  check(arr);
+return 0;
+
+}
